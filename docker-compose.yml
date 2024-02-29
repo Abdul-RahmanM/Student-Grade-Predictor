@@ -5,7 +5,9 @@ services:
     build: ./api-service
     restart: always
     volumes:
-     - ./api-service:/usr/src/app
+     - ./api-service:/usr/src/app/
+    environment:
+     AUTH: ${AUTH_TOKENS}
     ports:
      - 5000:5000
   wordpress:
@@ -22,7 +24,7 @@ services:
       - ./website:/var/www/html
     links:
       - db:db
-  db:  
+  db:
     image: mysql:8.0
     restart: always
     environment:
