@@ -8,6 +8,9 @@ services:
      - ./api-service:/usr/src/app/
     environment:
      AUTH: ${AUTH_TOKENS}
+     MYSQL_DATABASE: ${MYSQL_DATABASE}
+     MYSQL_USER: ${MYSQL_USER}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
      - 5000:5000
   wordpress:
@@ -17,9 +20,9 @@ services:
       - 80:80
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: exampleuser
-      WORDPRESS_DB_PASSWORD: examplepass
-      WORDPRESS_DB_NAME: exampledb
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     volumes:
       - ./website:/var/www/html
     links:
@@ -28,9 +31,9 @@ services:
     image: mysql:8.0
     restart: always
     environment:
-      MYSQL_DATABASE: exampledb
-      MYSQL_USER: exampleuser
-      MYSQL_PASSWORD: examplepass
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql

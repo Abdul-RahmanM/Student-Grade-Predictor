@@ -27,7 +27,7 @@ def predict_grade(input,clf=clf):
     pred = 100 * (clf.predict(input) / 20) # Turn prediction into percentage
     pred = np.round(pred,2)
     if pred > 100: # If pred is over 100% return 100% only
-      return 100
+      return [100]
     else:
       return list(pred)
 
@@ -35,7 +35,7 @@ def format_data_for_pred(data):
     feature_order = ['age', 'Medu', 'Fedu', 'failures', 'goout', 'absences', 'G1', 'G2','Mjob_other', 'Fjob_teacher', 'schoolsup_yes', 'studytime','internet_yes', 'traveltime']
     input = []
     for attribute in feature_order:
-       val = int(data.get(attribute))
+       val = int(float(data.get(attribute)))
        # Process input values into the required format for model
        if attribute == "absences":
           if val > 96:
@@ -96,9 +96,9 @@ def recieve():
 
     mydb = mysql.connector.connect(
       host = "db",
-      user = "exampleuser",
-      passwd = "examplepass",
-      database = "exampledb"
+      user = os.getenv("MYSQL_USER"),
+      passwd = os.getenv("MYSQL_PASSWORD"),
+      database = os.getenv("MYSQL_DATABASE")
     )
 
     cursor = mydb.cursor()

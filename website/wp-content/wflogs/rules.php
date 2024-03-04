@@ -4869,6 +4869,29 @@ wfWAFRuleComparisonSubject::create($this, array('request.queryString', 'action')
 wfWAFRuleComparisonSubject::create($this, array('request.queryString', 'action'), array (
 ))))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'currentUserIsNot', 'administrator', array(wfWAFRuleComparisonSubject::create($this, 'server.empty', array (
 ))))));
+$this->rules[670] = wfWAFRule::create($this, 670, NULL, 'hook-injection', '100', 'WAF-RULE-670', 0, 'block', new wfWAFRuleComparisonGroup(new wfWAFRuleComparison($this, 'versionLessThanEqualTo', '1.0.8', array(wfWAFRuleComparisonSubject::create($this, array('wordpress.plugins', 'check-email'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'match', '#/wp-admin/#i', array(wfWAFRuleComparisonSubject::create($this, 'server.script_filename', array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'keyExists', 'check-email-action', array(wfWAFRuleComparisonSubject::create($this, 'request.body', array (
+))))));
+$this->rules[671] = wfWAFRule::create($this, 671, NULL, 'hook-injection', '100', 'WAF-RULE-671', 0, 'block', new wfWAFRuleComparisonGroup(new wfWAFRuleComparison($this, 'versionLessThanEqualTo', '2.4.8', array(wfWAFRuleComparisonSubject::create($this, array('wordpress.plugins', 'email-log'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'match', '#/wp-admin/#i', array(wfWAFRuleComparisonSubject::create($this, 'server.script_filename', array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'keyExists', 'el-action', array(wfWAFRuleComparisonSubject::create($this, 'request.body', array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparisonGroup(new wfWAFRuleComparison($this, 'notEquals', 'el-download-system-info', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el_license_activate', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el_license_deactivate', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el_bundle_license_activate', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el_bundle_license_deactivate', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el-log-list-export', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el-log-list-export-all', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notEquals', 'el-export-logs-with-columns', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'el-action'), array (
+))))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'currentUserIsNot', 'administrator', array(wfWAFRuleComparisonSubject::create($this, 'server.empty', array (
+))))));
+$this->rules[672] = wfWAFRule::create($this, 672, NULL, 'sqli', '100', 'Ultimate Member – User Profile, Registration, Login, Member Directory, Content Restriction & Membership Plugin 2.1.3 - 2.8.2 - Unauthenticated SQL Injection', 0, 'block', new wfWAFRuleComparisonGroup(new wfWAFRuleComparison($this, 'match', '/\\/wp\\-admin[\\/]+admin\\-ajax\\.php/i', array(wfWAFRuleComparisonSubject::create($this, 'server.script_filename', array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'equals', 'um_get_members', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'action'), array (
+)),
+wfWAFRuleComparisonSubject::create($this, array('request.queryString', 'action'), array (
+)))), new wfWAFRuleLogicalOperator('AND'), new wfWAFRuleComparison($this, 'notMatch', '/^[a-z_-]*$/ix', array(wfWAFRuleComparisonSubject::create($this, array('request.body', 'sorting'), array (
+))))));
 $this->rules[307] = wfWAFRule::create($this, 307, NULL, 'brute-force', '100', 'Known malicious User-Agents', 0, 'block', new wfWAFRuleComparisonGroup(new wfWAFRuleComparison($this, 'equals', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)', array(wfWAFRuleComparisonSubject::create($this, array('request.headers', 'User-Agent'), array (
 )))), new wfWAFRuleLogicalOperator('OR'), new wfWAFRuleComparison($this, 'match', '#mozlila#i', array(wfWAFRuleComparisonSubject::create($this, array('request.headers', 'User-Agent'), array (
 )))), new wfWAFRuleLogicalOperator('OR'), new wfWAFRuleComparison($this, 'equals', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0', array(wfWAFRuleComparisonSubject::create($this, array('request.headers', 'User-Agent'), array (
