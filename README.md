@@ -1,4 +1,4 @@
-Website: http://armohammed.tech
+
 
 ## Inspiration
 For decades, educational interventions have operated reactively, waiting until students encounter academic hardships before offering support. This approach often proves ineffective, as by the time assistance arrives, students may already have experienced significant setbacks. This problem inspired me to create the Student Grade Predictor which will help identify students at risk of academic hardship and help faculty intervene before students experience a setback.  
@@ -8,7 +8,9 @@ The Student Grade Predictor can take in information of students from an entire s
 
 # User Guide for the Student Grade Predictor Website
 ## Introduction
-The Student Grade Predictor website is designed to assist educators and students by predicting academic outcomes based on various inputs. This document provides comprehensive instructions on how to navigate and utilize the website to its full potential.
+Website: http://armohammed.tech
+
+The Student Grade Predictor website is designed to assist educators and students by predicting academic outcomes based on various inputs. This document provides comprehensive instructions on how to navigate and utilize the website to its full potential. a
 
 ## Features
 ### Faculty Portal (School administrator use)
